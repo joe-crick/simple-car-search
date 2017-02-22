@@ -14,19 +14,19 @@ const getCarPropertySet = getUniqueSetByProperty(carStock.carStock);
  * @desc Search cars by color
  * @param color
  */
-export const searchCarsByColor = color => car => color ? car.color === color : true;
+const searchCarsByColor = color => car => color ? car.color === color : true;
 
 /**
  * @desc Search cars by Type
  * @param type
  */
-export const searchCarsByType = type => car => type ? car.type === type : true;
+const searchCarsByType = type => car => type ? car.type === type : true;
 
 /**
  * @desc Search cars by Price
  * @param price
  */
-export const searchCarsByPrice = price => car => price ? car.price <= price : true;
+const searchCarsByPrice = price => car => price ? car.price <= price : true;
 
 /**
  * @desc Returns the available car colors
