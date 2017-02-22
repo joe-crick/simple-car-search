@@ -17,7 +17,7 @@ const doc = document;
 const toOption = makeOption(doc);
 
 /**
- *
+ * @desc Initializes a drop down (i.e., select element) with options.
  * @param node
  */
 const initDropdown = node => dropdownOptions => {
@@ -28,7 +28,7 @@ const initDropdown = node => dropdownOptions => {
 };
 
 /**
- *
+ * @desc Initializes the car dropdown
  * @param carTypeSelector
  * @param carTypes
  */
@@ -37,7 +37,7 @@ const initCarTypeDropdown = (carTypeSelector, carTypes) => {
 };
 
 /**
- *
+ * @desc Initializes the color dropdown
  * @param carColorSelector
  * @param carColors
  */
@@ -69,7 +69,16 @@ const wireUpSearch = function (carColorSelector, carTypeSelector, priceFilter) {
 };
 
 /**
- * @desc Initialize the page
+ * @desc Initializes the state of the price filter
+ * @param priceFilter
+ */
+const initPriceFilter = priceFilter => {
+  priceFilter.min = cars.carPriceRange.min;
+  priceFilter.max = cars.carPriceRange.max;
+};
+
+/**
+ * @desc Initialize the app
  */
 const initApp = () => {
   const carTypeSelector = doc.querySelector('.car-types');
@@ -78,8 +87,7 @@ const initApp = () => {
 
   initCarTypeDropdown(carTypeSelector, cars.availableCarTypes);
   initCarColorDropdown(carColorSelector, cars.availableCarColors.sort());
-  priceFilter.min = cars.carPriceRange.min;
-  priceFilter.max = cars.carPriceRange.max;
+  initPriceFilter(priceFilter);
 
   wireUpSearch(carColorSelector, carTypeSelector, priceFilter);
 };
