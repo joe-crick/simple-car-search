@@ -6,6 +6,7 @@
 import * as cars from 'search-cars/models/cars';
 import {makeOption} from 'search-cars/lib/selects';
 import {appendChild} from 'search-cars/lib/append-child';
+import {makeListGroupItem} from 'search-cars/lib/lists';
 import './app.less';
 
 /*
@@ -31,11 +32,18 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
   initDropdown(carColorSelector)(carColors);
 };
 
-const carFilter = color => type => price => event => {
-  event.preventDefault();
-  const searchFilters = [color.value, type.value, price.value];
-  return cars.carsByColor(color.value)
-};
+const carFilter = color => type => price => () => {
+    const selectedColor = color.options[color.selectedIndex].value;
+    const selectedType = type.options[type.selectedIndex].value;
+    const colorFilter = cars.searchCarsByColor(selectedColor);
+    const typeFilter = cars.searchCarsByType(selectedType);
+    const priceFilter = cars.searchCarsByPrice(price.value);
+    return cars.carStock.items
+      .filter(colorFilter)
+      .filter(typeFilter)
+      .filter(priceFilter);
+
+  };
 
 /**
  * @desc Initialize the page
@@ -44,6 +52,7 @@ const initDocument = () => {
   const carTypeSelector = doc.querySelector('.car-types');
   const carColorSelector = doc.querySelector('.car-colors');
   const priceFilter = doc.querySelector('.car-price');
+  const searchResults = doc.querySelector('.search-results');
 
   initCarTypeDropdown(carTypeSelector, cars.availableCarTypes);
   initCarColorDropdown(carColorSelector, cars.availableCarColors.sort());
@@ -51,7 +60,16 @@ const initDocument = () => {
   priceFilter.max = cars.carPriceRange.max;
 
   const searchCars = carFilter(carColorSelector)(carTypeSelector)(priceFilter);
-  doc.querySelector('.search-cars').addEventListener('click', searchCars);
+  const toListItem = makeListGroupItem(doc);
+  const appendListItem = appendChild(searchResults);
+  const searchButton = doc.querySelector('.search-cars');
+  searchButton.addEventListener('click', event => {
+    event.preventDefault();
+    const blah = searchCars();
+    blah
+      .map(toListItem)
+      .forEach(appendListItem)
+  });
 };
 
 initDocument();

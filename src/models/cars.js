@@ -1,7 +1,7 @@
 // import carStock from './fixtures/car-data.json!';
 import {search, getUniqueSetByProperty} from 'search-cars/lib/filter-data';
 
-const carStock = {
+export const carStock = {
   "items": [
     {
       "color": "red",
@@ -53,19 +53,19 @@ const getCarPropertySet = getUniqueSetByProperty(carStock.items);
  * @desc Search cars by color
  * @param color
  */
-export const searchCarsByColor = color => car => car.color === color;
+export const searchCarsByColor = color => car => color ? car.color === color : true;
 
 /**
  * @desc Search cars by Type
  * @param type
  */
-export const searchCarsByType = type => car => car.type === type;
+export const searchCarsByType = type => car => type ? car.type === type : true;
 
 /**
  * @desc Search cars by Price
  * @param price
  */
-export const searchCarsByPrice = price => car => car.price === price;
+export const searchCarsByPrice = price => car => price ? car.price === price : true;
 
 /**
  * @desc Returns the available car colors
