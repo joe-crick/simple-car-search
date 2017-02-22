@@ -50,3 +50,13 @@ export const carPriceRange = {
     min: _allCarPrices.pop(),
     max: _allCarPrices.shift()
   };
+
+export const searchCars = color => type => price => {
+  const colorFilter = searchCarsByColor(color.options[color.selectedIndex].value);
+  const typeFilter = searchCarsByType(type.options[type.selectedIndex].value);
+  const priceFilter = searchCarsByPrice(price.value);
+  return carStock.carStock
+    .filter(colorFilter)
+    .filter(typeFilter)
+    .filter(priceFilter);
+};

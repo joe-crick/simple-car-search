@@ -16,6 +16,10 @@ import './app.less';
 const doc = document;
 const toOption = makeOption(doc);
 
+/**
+ *
+ * @param node
+ */
 const initDropdown = node => dropdownOptions => {
   const appendOption = appendChild(node);
   dropdownOptions
@@ -23,22 +27,22 @@ const initDropdown = node => dropdownOptions => {
     .forEach(appendOption);
 };
 
+/**
+ *
+ * @param carTypeSelector
+ * @param carTypes
+ */
 const initCarTypeDropdown = (carTypeSelector, carTypes) => {
   initDropdown(carTypeSelector)(carTypes);
 };
 
+/**
+ *
+ * @param carColorSelector
+ * @param carColors
+ */
 const initCarColorDropdown = (carColorSelector, carColors) => {
   initDropdown(carColorSelector)(carColors);
-};
-
-const carFilter = color => type => price => carStock => {
-  const colorFilter = cars.searchCarsByColor(color.options[color.selectedIndex].value);
-  const typeFilter = cars.searchCarsByType(type.options[type.selectedIndex].value);
-  const priceFilter = cars.searchCarsByPrice(price.value);
-  return carStock
-    .filter(colorFilter)
-    .filter(typeFilter)
-    .filter(priceFilter);
 };
 
 /**
@@ -49,16 +53,16 @@ const carFilter = color => type => price => carStock => {
  */
 // TODO: This could be refactored to be nicer...
 const wireUpSearch = function (carColorSelector, carTypeSelector, priceFilter) {
-  const searchResults = doc.querySelector('.search-results');
-  const searchCars = carFilter(carColorSelector)(carTypeSelector)(priceFilter);
-  const toListItem = makeListGroupItem(doc);
-  const appendListItem = appendChild(searchResults);
+  const searchResultsContainer = doc.querySelector('.search-results');
   const searchButton = doc.querySelector('.search-cars');
+  const toListItem = makeListGroupItem(doc);
+  const appendListItem = appendChild(searchResultsContainer);
 
   searchButton.addEventListener('click', event => {
     event.preventDefault();
-    searchResults.innerHTML = '';
-    searchCars(cars.getStock())
+    searchResultsContainer.innerHTML = '';
+    const carSearch = cars.searchCars(carColorSelector)(carTypeSelector)(priceFilter);
+    carSearch
       .map(toListItem)
       .forEach(appendListItem)
   });
