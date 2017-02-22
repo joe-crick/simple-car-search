@@ -57,12 +57,12 @@ const wireUpSearch = function (carColorSelector, carTypeSelector, priceFilter) {
   const searchButton = doc.querySelector('.search-cars');
   const toListItem = makeListGroupItem(doc);
   const appendListItem = appendChild(searchResultsContainer);
+  const carSearch = cars.searchCars(carColorSelector)(carTypeSelector)(priceFilter);
 
   searchButton.addEventListener('click', event => {
     event.preventDefault();
     searchResultsContainer.innerHTML = '';
-    const carSearch = cars.searchCars(carColorSelector)(carTypeSelector)(priceFilter);
-    carSearch
+    carSearch(cars.getStock())
       .map(toListItem)
       .forEach(appendListItem)
   });

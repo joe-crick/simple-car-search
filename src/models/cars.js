@@ -51,11 +51,15 @@ export const carPriceRange = {
     max: _allCarPrices.shift()
   };
 
-export const searchCars = color => type => price => {
+/**
+ * @desc Filters car stock data
+ * @param color
+ */
+export const searchCars = color => type => price => carStock => {
   const colorFilter = searchCarsByColor(color.options[color.selectedIndex].value);
   const typeFilter = searchCarsByType(type.options[type.selectedIndex].value);
   const priceFilter = searchCarsByPrice(price.value);
-  return carStock.carStock
+  return carStock
     .filter(colorFilter)
     .filter(typeFilter)
     .filter(priceFilter);
