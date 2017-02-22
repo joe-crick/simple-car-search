@@ -17,6 +17,7 @@
   "devDependencies": {
     "steal": "^1.2.5",
     "steal-less": "^1.1.0",
-    "steal-tools": "^1.1.2"
+    "steal-tools": "^1.1.2",
+    "system-json": "^0.1.0"
   }
 }

@@ -2380,7 +2380,7 @@ source-map-support@~0.2.8:
   dependencies:
     source-map "0.1.32"
 
-source-map@0.1.32:
+source-map@0.1.32, source-map@~0.1.30:
   version "0.1.32"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.32.tgz#c8b6c167797ba4740a8ea33252162ff08591b266"
   dependencies:
@@ -2393,12 +2393,6 @@ source-map@0.5.x, source-map@^0.5.0, source-map@^0.5.3, source-map@~0.5.1:
 source-map@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
-  dependencies:
-    amdefine ">=0.0.4"
-
-source-map@~0.1.30:
-  version "0.1.43"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
   dependencies:
     amdefine ">=0.0.4"
 
@@ -2573,6 +2567,10 @@ strip-json-comments@~2.0.1:
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
+
+system-json@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/system-json/-/system-json-0.1.0.tgz#feeb7d54ed7dcd8d474236d29b8ee29670c18f25"
 
 tape@~0.2.2:
   version "0.2.2"

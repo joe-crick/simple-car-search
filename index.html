@@ -8,16 +8,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
     <body>
-
+        <h1>Search for a Car</h1>
         <form class="form-inline">
-            <label class="mr-sm-2">Car Type:
+            <label class="mr-sm-2">Type:
                 <select class="car-types custom-select mb-2 mr-sm-2 mb-sm-0">
                 </select>
             </label>
 
-            <label class="mr-sm-2">Car Color:
+            <label class="mr-sm-2">Color:
                 <select class="car-colors custom-select mb-2 mr-sm-2 mb-sm-0">
                 </select>
+            </label>
+
+            <label class="mr-sm-2">Price:
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control car-price" placeholder="0.00">
+                </div>
             </label>
 
             <button type="submit" class="btn btn-primary">Submit</button>

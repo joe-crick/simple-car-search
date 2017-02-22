@@ -87,6 +87,6 @@ const _allCarPrices = getCarPropertySet('price').sort();
  * @type {{min: T, max: T}}
  */
 export const carPriceRange = {
-    min: _allCarPrices.shift(),
-    max: _allCarPrices.pop()
+    min: _allCarPrices.pop(),
+    max: _allCarPrices.shift()
   };

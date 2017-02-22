@@ -5,6 +5,7 @@
 
 import * as cars from 'search-cars/models/cars';
 import * as select from 'search-cars/lib/selects';
+import './app.less';
 
 /*
  * NOTE: The module bundler will encapsulate this module for me so that I don't have to use
@@ -35,6 +36,9 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
 const initDocument = () => {
   initCarTypeDropdown(doc.querySelector('.car-types'), cars.availableCarTypes);
   initCarColorDropdown(doc.querySelector('.car-colors'), cars.availableCarColors.sort());
+  const priceFilter = doc.querySelector(('.car-price'));
+  priceFilter.min = cars.carPriceRange.min;
+  priceFilter.max = cars.carPriceRange.max;
 };
 
 initDocument();
