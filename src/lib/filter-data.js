@@ -5,6 +5,8 @@
 export const search = data => searchPredicate => data.filter(searchPredicate);
 
 export const getUniqueSetByProperty = data => property =>
-  data.reduce((previousItem, currentItem) => previousItem[currentItem[property]] = currentItem[property],
-    {});
+  Array.from(data.reduce((set, currentItem) => {
+    set.add(currentItem[property]);
+    return set;
+  }, new Set()));
 

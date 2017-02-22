@@ -10,7 +10,8 @@
     },
     "npmAlgorithm": "flat",
     "plugins": [
-      "steal-less"
+      "steal-less",
+      "plugin-json"
     ]
   },
   "devDependencies": {
