@@ -2,7 +2,6 @@
  * Implement a small JavaScript app which allows to search for color, type and price in the provided JSON structure.
  * Please describe your solution and especially decision/assumptions you made.
  */
-
 import * as cars from 'search-cars/models/cars';
 import {makeOption} from 'search-cars/lib/selects';
 import {appendChild} from 'search-cars/lib/append-child';
@@ -32,11 +31,11 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
   initDropdown(carColorSelector)(carColors);
 };
 
-const carFilter = color => type => price => () => {
+const carFilter = color => type => price => carStock => {
     const colorFilter = cars.searchCarsByColor(color.options[color.selectedIndex].value);
     const typeFilter = cars.searchCarsByType(type.options[type.selectedIndex].value);
     const priceFilter = cars.searchCarsByPrice(price.value);
-    return cars.carStock.items
+    return carStock
       .filter(colorFilter)
       .filter(typeFilter)
       .filter(priceFilter);
@@ -62,8 +61,8 @@ const initDocument = () => {
   const searchButton = doc.querySelector('.search-cars');
   searchButton.addEventListener('click', event => {
     event.preventDefault();
-    const blah = searchCars();
-    blah
+    searchResults.innerHTML = '';
+    searchCars(cars.getStock())
       .map(toListItem)
       .forEach(appendListItem)
   });
