@@ -32,33 +32,29 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
 };
 
 const carFilter = color => type => price => carStock => {
-    const colorFilter = cars.searchCarsByColor(color.options[color.selectedIndex].value);
-    const typeFilter = cars.searchCarsByType(type.options[type.selectedIndex].value);
-    const priceFilter = cars.searchCarsByPrice(price.value);
-    return carStock
-      .filter(colorFilter)
-      .filter(typeFilter)
-      .filter(priceFilter);
-  };
+  const colorFilter = cars.searchCarsByColor(color.options[color.selectedIndex].value);
+  const typeFilter = cars.searchCarsByType(type.options[type.selectedIndex].value);
+  const priceFilter = cars.searchCarsByPrice(price.value);
+  return carStock
+    .filter(colorFilter)
+    .filter(typeFilter)
+    .filter(priceFilter);
+};
 
 /**
- * @desc Initialize the page
+ * @desc Wires up the click event on the search button to the search
+ * @param carColorSelector
+ * @param carTypeSelector
+ * @param priceFilter
  */
-const initDocument = () => {
-  const carTypeSelector = doc.querySelector('.car-types');
-  const carColorSelector = doc.querySelector('.car-colors');
-  const priceFilter = doc.querySelector('.car-price');
+// TODO: This could be refactored to be nicer...
+const wireUpSearch = function (carColorSelector, carTypeSelector, priceFilter) {
   const searchResults = doc.querySelector('.search-results');
-
-  initCarTypeDropdown(carTypeSelector, cars.availableCarTypes);
-  initCarColorDropdown(carColorSelector, cars.availableCarColors.sort());
-  priceFilter.min = cars.carPriceRange.min;
-  priceFilter.max = cars.carPriceRange.max;
-
   const searchCars = carFilter(carColorSelector)(carTypeSelector)(priceFilter);
   const toListItem = makeListGroupItem(doc);
   const appendListItem = appendChild(searchResults);
   const searchButton = doc.querySelector('.search-cars');
+
   searchButton.addEventListener('click', event => {
     event.preventDefault();
     searchResults.innerHTML = '';
@@ -68,4 +64,20 @@ const initDocument = () => {
   });
 };
 
-initDocument();
+/**
+ * @desc Initialize the page
+ */
+const initApp = () => {
+  const carTypeSelector = doc.querySelector('.car-types');
+  const carColorSelector = doc.querySelector('.car-colors');
+  const priceFilter = doc.querySelector('.car-price');
+
+  initCarTypeDropdown(carTypeSelector, cars.availableCarTypes);
+  initCarColorDropdown(carColorSelector, cars.availableCarColors.sort());
+  priceFilter.min = cars.carPriceRange.min;
+  priceFilter.max = cars.carPriceRange.max;
+
+  wireUpSearch(carColorSelector, carTypeSelector, priceFilter);
+};
+
+initApp();
