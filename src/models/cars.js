@@ -26,7 +26,7 @@ export const searchCarsByType = type => car => type ? car.type === type : true;
  * @desc Search cars by Price
  * @param price
  */
-export const searchCarsByPrice = price => car => price ? car.price === price : true;
+export const searchCarsByPrice = price => car => price ? car.price <= price : true;
 
 /**
  * @desc Returns the available car colors
