@@ -1,6 +1,6 @@
 import test from 'tape';
 import mockBrowser from 'mock-browser';
-import {makeOption} from '../../src/lib/lists';
+import {makeOption} from '../../src/lib/selects';
 const MockBrowser = mockBrowser.mocks.MockBrowser;
 
 function setUp () {
