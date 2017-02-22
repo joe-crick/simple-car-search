@@ -33,16 +33,13 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
 };
 
 const carFilter = color => type => price => () => {
-    const selectedColor = color.options[color.selectedIndex].value;
-    const selectedType = type.options[type.selectedIndex].value;
-    const colorFilter = cars.searchCarsByColor(selectedColor);
-    const typeFilter = cars.searchCarsByType(selectedType);
+    const colorFilter = cars.searchCarsByColor(color.options[color.selectedIndex].value);
+    const typeFilter = cars.searchCarsByType(type.options[type.selectedIndex].value);
     const priceFilter = cars.searchCarsByPrice(price.value);
     return cars.carStock.items
       .filter(colorFilter)
       .filter(typeFilter)
       .filter(priceFilter);
-
   };
 
 /**
