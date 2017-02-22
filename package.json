@@ -1,0 +1,21 @@
+{
+  "name": "search-cars",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "system": {
+    "main": "app",
+    "directories": {
+      "lib": "src"
+    },
+    "npmAlgorithm": "flat",
+    "plugins": [
+      "steal-less"
+    ]
+  },
+  "devDependencies": {
+    "steal": "^1.2.5",
+    "steal-less": "^1.1.0",
+    "steal-tools": "^1.1.2"
+  }
+}
