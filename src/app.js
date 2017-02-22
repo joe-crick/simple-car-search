@@ -4,7 +4,8 @@
  */
 
 import * as cars from 'search-cars/models/cars';
-import * as select from 'search-cars/lib/selects';
+import {makeOption} from 'search-cars/lib/selects';
+import {appendChild} from 'search-cars/lib/append-child';
 import './app.less';
 
 /*
@@ -13,12 +14,12 @@ import './app.less';
  */
 
 const doc = document;
-const makeOption = select.makeOption(doc);
+const toOption = makeOption(doc);
 
 const initDropdown = node => dropdownOptions => {
-  const appendOption = select.appendOptions(node);
+  const appendOption = appendChild(node);
   dropdownOptions
-    .map(makeOption)
+    .map(toOption)
     .forEach(appendOption);
 };
 
@@ -30,15 +31,27 @@ const initCarColorDropdown = (carColorSelector, carColors) => {
   initDropdown(carColorSelector)(carColors);
 };
 
+const carFilter = color => type => price => event => {
+  event.preventDefault();
+  const searchFilters = [color.value, type.value, price.value];
+  return cars.carsByColor(color.value)
+};
+
 /**
  * @desc Initialize the page
  */
 const initDocument = () => {
-  initCarTypeDropdown(doc.querySelector('.car-types'), cars.availableCarTypes);
-  initCarColorDropdown(doc.querySelector('.car-colors'), cars.availableCarColors.sort());
-  const priceFilter = doc.querySelector(('.car-price'));
+  const carTypeSelector = doc.querySelector('.car-types');
+  const carColorSelector = doc.querySelector('.car-colors');
+  const priceFilter = doc.querySelector('.car-price');
+
+  initCarTypeDropdown(carTypeSelector, cars.availableCarTypes);
+  initCarColorDropdown(carColorSelector, cars.availableCarColors.sort());
   priceFilter.min = cars.carPriceRange.min;
   priceFilter.max = cars.carPriceRange.max;
+
+  const searchCars = carFilter(carColorSelector)(carTypeSelector)(priceFilter);
+  doc.querySelector('.search-cars').addEventListener('click', searchCars);
 };
 
 initDocument();

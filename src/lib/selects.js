@@ -4,5 +4,3 @@ export const makeOption = doc => type => {
   option.textContent = type;
   return option;
 };
-
-export const appendOptions = selector => option => selector.appendChild(option);
