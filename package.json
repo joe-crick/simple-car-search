@@ -14,11 +14,19 @@
       "plugin-json"
     ]
   },
+  "scripts": {
+    "tape-tests": "babel-tape-runner tests/**/*.js | faucet",
+    "test": "npm-run-all tape-tests"
+  },
   "devDependencies": {
+    "babel-tape-runner": "^2.0.1",
     "eslint": "^3.16.0",
+    "faucet": "^0.0.1",
+    "npm-run-all": "^4.0.1",
     "steal": "^1.2.5",
     "steal-less": "^1.1.0",
     "steal-tools": "^1.1.2",
-    "system-json": "^0.1.0"
+    "system-json": "^0.1.0",
+    "tape": "^4.6.3"
   }
 }
