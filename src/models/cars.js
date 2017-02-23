@@ -50,7 +50,7 @@ export const carPriceRange = {
     min: _allCarPrices.pop(),
     max: _allCarPrices.shift()
   };
-
+// TODO: Refactor this to data utils? Keep the data and the functions separate
 /**
  * @desc Filters car stock data
  * @param color
