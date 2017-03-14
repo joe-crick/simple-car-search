@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Search Cars</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-              integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-              crossorigin="anonymous">
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    </head>
-    <body>
-        <h1>Search for a Car</h1>
-        <form class="form-inline">
-            <label class="mr-sm-2">Type:
+
+<head>
+    <title>Search Cars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <h1>Search for a Car</h1>
+    <form class="form-inline">
+        <label class="mr-sm-2">Type:
                 <select class="car-types custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option/>
                 </select>
             </label>
 
-            <label class="mr-sm-2">Color:
+        <label class="mr-sm-2">Color:
                 <select class="car-colors custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option/>
                 </select>
             </label>
 
-            <label class="mr-sm-2">Price:
+        <label class="mr-sm-2">Price:
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon">$</div>
                     <input type="number" class="form-control car-price" placeholder="0.00">
                 </div>
             </label>
 
-            <button type="submit" class="btn btn-primary search-cars">Search Cars</button>
-        </form>
+        <button type="submit" class="btn btn-primary search-cars">Search Cars</button>
+    </form>
 
-        <div class="search-results-container">
+    <div class="search-results-container">
 
-            <h3>Search Results:</h3>
-            <ul class="list-group search-results">
-            </ul>
+        <h3>Search Results:</h3>
+        <ul class="list-group search-results">
+        </ul>
 
-        </div>
+    </div>
 
-        <script src="node_modules/steal/steal.js"></script>
-    </body>
+    <script src="node_modules/steal/steal.js"></script>
+</body>
+
 </html>

@@ -1,6 +1,11 @@
 import carStock from './fixtures/car-data.json';
 import {search, getUniqueSetByProperty} from 'search-cars/lib/filter-data';
 
+/**
+ * @description Returns the stock of cars
+ * @export
+ * @returns 
+ */
 export function getStock(){
   return carStock.carStock;
 }
@@ -50,6 +55,7 @@ export const carPriceRange = {
     min: _allCarPrices.pop(),
     max: _allCarPrices.shift()
   };
+  
 // TODO: Refactor this to data utils? Keep the data and the functions separate
 /**
  * @desc Filters car stock data
